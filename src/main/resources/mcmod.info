@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Feelcraft",
+  "name": "Feelcraft",
+  "description": "A new Minecraft experience - This mod will get your Minecraft window into a virtual desktop, with other little windows created by community plugins.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/TheShark34/Feelcraft",
+  "updateUrl": "https://github.com/TheShark34/Feelcraft",
+  "authorList": ["TheShark34"],
+  "credits": "TheShark34",
+  "logoFile": "/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
