@@ -37,6 +37,7 @@ public class AntialiasLabel extends JLabel {
 	 *            The JLabel text
 	 */
 	public AntialiasLabel(String text) {
+		// Calling the normal constructor =3
 		super(text);
 	}
 
@@ -45,10 +46,14 @@ public class AntialiasLabel extends JLabel {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
+		// Gettings the 2D graphics
 		Graphics2D g2d = (Graphics2D) g;
+		
+		// Adding the antialias rendering hints
 		g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
 				RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
+		// Calling the super paint component method
 		super.paintComponent(g2d);
 	}
 

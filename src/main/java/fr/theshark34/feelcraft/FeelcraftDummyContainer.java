@@ -17,16 +17,14 @@ package fr.theshark34.feelcraft;
 
 import java.util.Arrays;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
 
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.ModMetadata;
-import cpw.mods.fml.common.event.FMLConstructionEvent;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 /**
  * The Feelcraft mod container - Contains infos of the mod like its version, its
@@ -37,6 +35,14 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
  */
 public class FeelcraftDummyContainer extends DummyModContainer {
 
+	/**
+	 * The Minecraft logger
+	 */
+	private static final Logger logger = LogManager.getLogger();
+
+	/**
+	 * Inits the mod metadata infos
+	 */
 	public FeelcraftDummyContainer() {
 		super(new ModMetadata());
 		ModMetadata meta = getMetadata();
@@ -52,30 +58,13 @@ public class FeelcraftDummyContainer extends DummyModContainer {
 		meta.logoFile = "/logo.png";
 	}
 
+	/**
+	 * Registers the events
+	 */
 	@Override
 	public boolean registerBus(EventBus bus, LoadController controller) {
 		bus.register(this);
 		return true;
-	}
-
-	@Subscribe
-	public void modConstruction(FMLConstructionEvent event) {
-
-	}
-
-	@Subscribe
-	public void init(FMLInitializationEvent evt) {
-
-	}
-
-	@Subscribe
-	public void preInit(FMLPreInitializationEvent event) {
-
-	}
-
-	@Subscribe
-	public void postInit(FMLPostInitializationEvent evt) {
-
 	}
 
 }

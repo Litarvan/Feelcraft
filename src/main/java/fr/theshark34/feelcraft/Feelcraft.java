@@ -55,6 +55,11 @@ public class Feelcraft {
 	private static VirtualDesktop vd;
 
 	/**
+	 * The current splash screen
+	 */
+	private static Splash splash;
+
+	/**
 	 * Starts Feelcraft, called by the startGame method of the modified
 	 * Minecraft class. t will load the server pack with the {@link PackLoader},
 	 * a zip file that contains backgrounds, infos, etc... It will start the
@@ -64,14 +69,6 @@ public class Feelcraft {
 	public static void start() {
 		// Printing some messages
 		logger.info("[Feelcraft] Starting Feelcraft " + VERSION);
-		logger.info("[Feelcraft] Loading the serverpack");
-
-		// Loading the server pack
-		try {
-			PackLoader.loadPack();
-		} catch (ZipException e) {
-		} catch (IOException e) {
-		}
 
 		// Loading the Nimbus Look N Feel
 		logger.info("[Feelcraft] Setting the Nimbus Look N Feel");
@@ -87,7 +84,6 @@ public class Feelcraft {
 		} catch (UnsupportedLookAndFeelException e1) {
 		}
 
-		// Creating the virtual desktop
 		logger.info("[Feelcraft] Creating the virtual desktop");
 		vd = new VirtualDesktop();
 
@@ -110,6 +106,40 @@ public class Feelcraft {
 
 		// End =)
 		logger.info("[Feelcraft] Yeah ! Feelcraft loaded successfully without any known problem !");
+
+		// Hiding the splash
+		Splash.hideSplash();
+	}
+
+	/**
+	 * Returns the actual instance of the virtual desktop, only this package can
+	 * use this method
+	 * 
+	 * @return The virtual desktop instance
+	 */
+	VirtualDesktop getVirtualDesktop() {
+		return this.vd;
+	}
+
+	/**
+	 * This pre-init Feelcraft, called when transforming. It will loads the
+	 * server pack and shows the splash.
+	 */
+	public static void preInit() {
+		// Printing a message
+		logger.info("[Feelcraft] Starting Feelcraft " + VERSION
+				+ " pre-initialization");
+		logger.info("[Feelcraft] Loading the server-pack");
+
+		// Loading the server pack
+		try {
+			PackLoader.loadPack();
+		} catch (ZipException e) {
+		} catch (IOException e) {
+		}
+
+		// Displaying the splash screen
+		new Splash();
 	}
 
 }

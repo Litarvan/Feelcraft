@@ -82,6 +82,9 @@ public class FeelcraftClassTransformer implements IClassTransformer {
 	 * @return The modified bytes
 	 */
 	public byte[] patchClassASM(String name, byte[] bytes, boolean obfuscated) {
+		// Starting the pre init
+		Feelcraft.preInit();
+		
 		// Printing messages
 		logger.info("[Feelcraft] Starting patching Minecraft");
 		logger.info("[Feelcraft] Target class : " + name);
